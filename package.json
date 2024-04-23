@@ -21,6 +21,7 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
     "eslint": "^8.57.0",
-    "nuxt-quasar-ui": "^2.0.8"
+    "nuxt-quasar-ui": "^2.0.8",
+    "sass": "^1.74.1"
   }
 }
