@@ -56,6 +56,7 @@ const toggleLeftDrawer = () => {
   align-items: center;
   font-size: 1.2rem;
   border-bottom: 1px solid gray;
+  margin-bottom: 50px;
 
   &-logo {
     width: 8rem;

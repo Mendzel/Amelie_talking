@@ -31,6 +31,14 @@
       Kontakt
     </router-link>
   </li>
+  <li class="header-menu-list-button">
+    <router-link
+      class="link"
+      to="/admin"
+    >
+      Admin
+    </router-link>
+  </li>
 </template>
 
 <style lang="scss" scoped>

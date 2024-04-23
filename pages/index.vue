@@ -1,11 +1,7 @@
-<template lang="">
-  <div />
+<script setup lang="ts"></script>
+
+<template>
+  <PostMostRecent />
 </template>
-<script>
-export default {
 
-};
-</script>
-<style lang="">
-
-</style>
+<style lang="scss"></style>
