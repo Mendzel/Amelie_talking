@@ -1,8 +1,12 @@
 <script setup lang="ts">
-const onSubmit = () => {};
+import type { LoginForm } from '~/model/login/endpoints';
 
-const name = ref('');
-const password = ref('');
+const model = ref<LoginForm>({
+  email: '',
+  password: '',
+});
+
+const onSubmit = () => {};
 </script>
 
 <template>
@@ -11,9 +15,9 @@ const password = ref('');
       class="q-gutter-md login-form"
       @submit="onSubmit"
     >
-      <FormEmailInput v-model="name" />
+      <FormEmailInput v-model="model.email" />
 
-      <FormPasswordInput v-model="password" />
+      <FormPasswordInput v-model="model.password" />
 
       <ButtonSecondary
         label="Wyślij"

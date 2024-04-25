@@ -15,6 +15,10 @@ defineProps({
   required: {
     type: Boolean,
     default: false,
+  },
+  debounce: {
+    type: String,
+    default: undefined,
   }
 });
 
@@ -29,6 +33,7 @@ const model = defineModel<string | undefined>();
     :hint="hint"
     type="text"
     :required="required"
+    :debounce="debounce"
   >
     <template #inputIcon>
       <q-icon :name="inputIcon" />

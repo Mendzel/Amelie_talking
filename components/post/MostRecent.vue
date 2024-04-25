@@ -36,7 +36,6 @@ const post = {
   min-height: 277px;
   text-decoration: none;
   cursor: pointer;
-  padding: 30px;
 
   &-post {
     background-color: $secondary;

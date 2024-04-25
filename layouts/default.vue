@@ -4,7 +4,7 @@
 <template>
   <q-layout class="default-layout">
     <AppHeader />
-    <div class="page-content">
+    <div class="page-content q-pa-sm">
       <slot />
     </div>
     <AppFooter />

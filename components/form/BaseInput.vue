@@ -8,10 +8,6 @@ defineProps({
     type: String,
     default: undefined,
   },
-  inputIcon: {
-    type: String,
-    default: undefined,
-  },
   type: {
     type: String,
     default: 'text',
@@ -20,6 +16,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  debounce: {
+    type: String,
+    default: undefined,
+  }
 });
 
 const model = defineModel<string | number | undefined>();
@@ -32,7 +32,9 @@ const model = defineModel<string | number | undefined>();
     :type="type"
     :label="label"
     :hint="hint"
+    :debounce="debounce"
     :required="required"
+    color="purple-8"
   >
     <template #append>
       <slot name="inputIcon" />
