@@ -18,17 +18,9 @@
   <li class="header-menu-list-button">
     <router-link
       class="link"
-      to="/selfcare"
+      to="/help"
     >
       Pomoc
-    </router-link>
-  </li>
-  <li class="header-menu-list-button">
-    <router-link
-      class="link"
-      to="/contact"
-    >
-      Kontakt
     </router-link>
   </li>
   <li class="header-menu-list-button">

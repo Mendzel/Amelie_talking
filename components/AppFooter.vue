@@ -18,9 +18,7 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  position: fixed;
   width: 100%;
-  bottom: 0;
   font-size: 1rem;
   font-weight: bold;
 

@@ -1,10 +1,17 @@
 <script setup lang="ts">
-const post = {
-  category: 'Borderline',
-  title: 'Mechanizmy obronne w borderline - Dewaluacja',
-  content:
-    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
-  date: '2021-01-01',
+import { PostCategory } from '~/model/filter/categories';
+import type { PostItem } from '~/model/post/endpoints';
+
+const post: PostItem = {
+  id: 1,
+  title: 'Osobowość typu borderline – charakterystyka, objawy, czym jest zaburzenie osobowości borderline?',
+  content: '',
+  dateCreated: '2024-01-01',
+  description: `Borderline to zaburzenie charakteryzujące się odczuwaniem skrajnych i intensywnych emocji.
+    Momenty spokoju, mogą zamienić się w stany depresyjne, a te w bardzo silne pobudzenie.
+    Pacjenci z borderline doświadczają również stanów porównywanych do nerwicy wegetatywnej.`,
+  category: PostCategory.bpd,
+  photoCover: 'https://www.sueddeutsche.de/image/sz.1.2895624/704x396?v=1519260628',
 };
 </script>
 
@@ -17,13 +24,13 @@ const post = {
       <div class="most-recent-post-title">
         <h3>{{ post.title }}</h3>
       </div>
-      <div class="most-recent-post-content">
-        <p>{{ post.content }}</p>
+      <div class="most-recent-post-description">
+        <p>{{ post.description }}</p>
       </div>
     </div>
     <img
       class="most-recent-image"
-      src="https://www.sueddeutsche.de/image/sz.1.2895624/704x396?v=1519260628"
+      :src="post.photoCover"
     >
   </a>
 </template>
@@ -66,9 +73,14 @@ const post = {
       }
     }
 
-    &-content {
+    &-description {
       color: rgb(226, 226, 226);
       font-size: 14px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 
