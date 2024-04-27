@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const layout = "default";
+const layout = 'default';
 </script>
 
 <template>
@@ -7,3 +7,12 @@ const layout = "default";
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<style lang="scss">
+@import '@/assets/colors.scss';
+
+body {
+  background-color: $primary;
+  height: 100%;
+}
+</style>

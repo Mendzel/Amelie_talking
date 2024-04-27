@@ -32,5 +32,6 @@ const onSubmit = () => {};
   max-width: 500px;
   margin: auto;
   text-align: center;
+  height: 70vh;
 }
 </style>

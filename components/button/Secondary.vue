@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ButtonSize } from '~/model/form/ButtonSizes';
+import { ButtonSize } from '~/model/shared/ButtonSizes';
 import { type PropType } from 'vue';
 
 defineProps({
