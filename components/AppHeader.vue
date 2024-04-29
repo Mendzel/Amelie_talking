@@ -10,12 +10,12 @@ const toggleLeftDrawer = () => {
 <template>
   <div class="header q-px-md q-py-sm">
     <div class="header-logo">
-      <router-link to="/">
+      <NuxtLink to="/">
         <img
           src="@/public/logo.png"
           alt="logo"
         >
-      </router-link>
+      </NuxtLink>
     </div>
     <div class="header-menu">
       <ul class="gt-md header-menu-list">

@@ -1,35 +1,35 @@
 <template lang="">
   <li class="header-menu-list-button">
-    <router-link
+    <NuxtLink
       class="link"
       to="/psychology"
     >
       Psychologia
-    </router-link>
+    </NuxtLink>
   </li>
   <li class="header-menu-list-button">
-    <router-link
+    <NuxtLink
       class="link"
       to="/selfcare"
     >
       Zdrowie
-    </router-link>
+    </NuxtLink>
   </li>
   <li class="header-menu-list-button">
-    <router-link
+    <NuxtLink
       class="link"
       to="/help"
     >
       Pomoc
-    </router-link>
+    </NuxtLink>
   </li>
   <li class="header-menu-list-button">
-    <router-link
+    <NuxtLink
       class="link"
       to="/admin"
     >
       Admin
-    </router-link>
+    </NuxtLink>
   </li>
 </template>
 

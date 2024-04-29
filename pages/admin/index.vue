@@ -1,10 +1,29 @@
 <script lang="ts" setup>
+interface Tab {
+  name: string;
+  icon: string;
+  label: string;
+}
+
 definePageMeta({
   layout: false,
 });
 
 const splitterModel = ref(10);
-const tab = ref('posts');
+const currentTab = ref('posts');
+
+const tabs: Tab[] = [
+  {
+    name: 'posts',
+    label: 'Posty',
+    icon: 'post_add',
+  },
+  {
+    name: 'banners',
+    icon: 'ad_units',
+    label: 'Banery',
+  }
+];
 </script>
 
 <template>
@@ -15,28 +34,25 @@ const tab = ref('posts');
       >
         <template #before>
           <q-tabs
-            v-model="tab"
+            v-model="currentTab"
             vertical
             active-color="yellow-3"
             active-bg-color="purple-8"
             class="text-purple-8"
           >
             <q-tab
-              name="posts"
-              icon="post_add"
-              label="Posty"
-            />
-            <q-tab
-              name="banners"
-              icon="ad_units"
-              label="Banery"
+              v-for="tab in tabs"
+              :key="tab.name"
+              :name="tab.name"
+              :icon="tab.icon"
+              :label="tab.label"
             />
           </q-tabs>
         </template>
 
         <template #after>
           <q-tab-panels
-            v-model="tab"
+            v-model="currentTab"
             animated
             swipeable
             vertical
@@ -48,10 +64,12 @@ const tab = ref('posts');
               class="posts"
             >
               <div class="posts-topbar">
-                <ButtonSecondary
-                  label="Dodaj post"
-                  icon="add"
-                />
+                <NuxtLink to="/admin/post">
+                  <ButtonSecondary
+                    label="Dodaj post"
+                    icon="add"
+                  />
+                </NuxtLink>
               </div>
               <AdminPostList class=" q-mr-lg" />
             </q-tab-panel>

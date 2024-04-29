@@ -2,11 +2,11 @@ import type { PostCategoryItem } from "~/model/categories/endpoints";
 import { PostCategory } from '~/model/filter/categories';
 
 export interface PostItem {
-    id: number,
+    id?: number,
     title: string,
     description: string,
-    dateCreated: string,
-    category: PostCategoryItem,
+    dateCreated?: string,
+    category?: PostCategoryItem,
     // author: string,
     photoCover: string,
     content: string,

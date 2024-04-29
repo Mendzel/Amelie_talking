@@ -38,11 +38,9 @@ watch(
           </div>
         </div>
       </div>
-      <FormSelectInput
+      <FormCategoriesSelect
         v-model="categorySelected"
         class="lt-md col-6"
-        label="Kategoria"
-        :options="categories"
       />
     </div>
     <div class="filter-bar-search col-4">
