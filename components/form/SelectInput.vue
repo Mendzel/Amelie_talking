@@ -15,10 +15,19 @@ defineProps({
   options: {
     type: Array,
     default: () => [],
-  }
+  },
+  mapOptions: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const model = defineModel<string | string[]>();
+export type SelectOption = {
+  label: string;
+  value: string | number;
+}
+
+const model = defineModel<string | string[] | number | number[] | PropType<SelectOption[]>>();
 </script>
 
 <template>
@@ -29,6 +38,7 @@ const model = defineModel<string | string[]>();
     :label="label"
     :multiple="multiple"
     :required="required"
+    :map-options="mapOptions"
   >
     <template #append>
       <slot name="inputIcon" />

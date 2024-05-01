@@ -16,11 +16,13 @@
           {{ post.title }}
         </div>
         <div class="list-item-post-actions">
-          <ButtonIcon
-            class="q-ma-sm"
-            icon="edit"
-            color="blue"
-          />
+          <NuxtLink :to="getEditPath(post.id)">
+            <ButtonIcon
+              class="q-ma-sm"
+              icon="edit"
+              color="blue"
+            />
+          </NuxtLink>
           <ButtonIcon
             class="q-ma-sm"
             icon="delete"
@@ -33,9 +35,12 @@
 </template>
 
 <script lang="ts" setup>
-import { mockPosts, type PostItem } from '~/model/post/endpoints';
+import { mockPosts } from '~/model/mocks/posts';
+import {type PostListItem } from '~/model/post/endpoints';
 
-const posts: PostItem[] = mockPosts;
+const posts: PostListItem[] = mockPosts;
+
+const getEditPath = (id: number | undefined) => `admin/post/${id}`;
 </script>
 
 <style lang="scss" scoped>

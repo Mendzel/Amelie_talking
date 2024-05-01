@@ -1,11 +1,6 @@
 <script lang="ts" setup>
-import { PostCategory } from '~/model/filter/categories';
-
-const categories = computed(() => {
-  return Object.values(PostCategory);
-});
 const searchFilter = ref<string>('');
-const categorySelected = ref<string | undefined>();
+const categorySelected = ref<number | undefined>();
 
 watch(
     () => searchFilter.value,
@@ -27,20 +22,9 @@ watch(
 <template>
   <div class="filter-bar row">
     <div class="col-8 row">
-      <div class="filter-bar-categories gt-sm">
-        <div
-          v-for="category in categories"
-          :key="category"
-          class="filter-bar-categories-button"
-        >
-          <div @click="categorySelected = category">
-            {{ category }}
-          </div>
-        </div>
-      </div>
       <FormCategoriesSelect
         v-model="categorySelected"
-        class="lt-md col-6"
+        class="col-6"
       />
     </div>
     <div class="filter-bar-search col-4">

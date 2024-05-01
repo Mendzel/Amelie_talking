@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.11",
+    "lodash": "^4.17.21",
     "nuxt": "^3.11.1",
     "quasar": "^2.15.2",
     "vue": "^3.4.21",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
+    "@types/lodash": "^4.17.0",
     "eslint": "^8.57.0",
     "nuxt-quasar-ui": "^2.0.8",
     "sass": "^1.74.1"

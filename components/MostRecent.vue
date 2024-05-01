@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { PostCategory } from '~/model/filter/categories';
-import type { PostItem } from '~/model/post/endpoints';
+import { mockPosts } from '~/model/mocks/posts';
+import type { PostListItem } from '~/model/post/endpoints';
 
-const post: PostItem = {
-  id: 1,
-  title: 'Osobowość typu borderline – charakterystyka, objawy, czym jest zaburzenie osobowości borderline?',
-  content: '',
-  dateCreated: '2024-01-01',
-  description: `Borderline to zaburzenie charakteryzujące się odczuwaniem skrajnych i intensywnych emocji.
-    Momenty spokoju, mogą zamienić się w stany depresyjne, a te w bardzo silne pobudzenie.
-    Pacjenci z borderline doświadczają również stanów porównywanych do nerwicy wegetatywnej.`,
-  category: PostCategory.bpd,
-  photoCover: 'https://www.sueddeutsche.de/image/sz.1.2895624/704x396?v=1519260628',
-};
+const post: PostListItem = mockPosts[1];
 </script>
 
 <template>
   <a class="most-recent">
     <div class="most-recent-post">
       <div class="most-recent-post-category">
-        <p>{{ post.category }}</p>
+        <p>{{ post.category?.name }}</p>
       </div>
       <div class="most-recent-post-title">
         <h3>{{ post.title }}</h3>

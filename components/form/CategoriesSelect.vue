@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 // import type { PostCategoryItem } from '~/model/categories/endpoints';
-import { PostCategory } from '~/model/filter/categories';
+import { mockCategories } from '~/model/mocks/categories';
+import type { SelectOption } from '~/components/form/SelectInput.vue';
 
 const props = defineProps({
   required: {
@@ -13,14 +14,17 @@ const props = defineProps({
   },
 });
 
-const model = defineModel<string | string[]>();
+const model = defineModel<number | number[]>();
 
 // const categories = ref<PostCategoryItem[]>();
 
-// TODO GET CATEGORIES
-
-const categories = computed(() => {
-  return Object.values(PostCategory);
+const categories= computed((): SelectOption[] => {
+  return mockCategories.map(category => {
+    return {
+      label: category.name,
+      value: category.id,
+    };
+  });
 });
 
 const label = computed(() => {
@@ -36,5 +40,6 @@ const label = computed(() => {
     :label="label"
     :multiple="multiple"
     :required="required"
+    map-options
   />
 </template>

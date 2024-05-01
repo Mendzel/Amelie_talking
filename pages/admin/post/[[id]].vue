@@ -1,47 +1,72 @@
 <script lang="ts" setup>
-import type { PostItem } from '~/model/post/endpoints';
+import { mockPosts } from '~/model/mocks/posts';
+import type { PostFormItem, PostListItem } from '~/model/post/endpoints';
+import _ from 'lodash';
+
+const route = useRoute();
 
 definePageMeta({
   layout: false,
 });
 
-const model = ref<PostItem>({
-    title: '',
-    description: '',
-    category: undefined,
-    photoCover: '',
-    content: '',
+const previewVisible = ref(false);
+const downloadedPost = ref<PostListItem | null>();
+
+const post = ref<PostFormItem>({
+  title: '',
+  content: '',
+  categoryId: undefined,
+  description: '',
+  photoCover: '',
+  dateCreated: new Date(Date.now()).toLocaleDateString(),
 });
+
+const getPost = (): PostListItem => {
+  const id = +route.params.id;
+  // const post = await $axios.$get<PostListItem>(`/api/posts/${id}`);
+
+  return mockPosts[id];
+};
+
+const convertPostToFormItem = () => {
+  post.value = {
+    ..._.omit(downloadedPost.value, 'category'),
+    categoryId: downloadedPost.value?.category?.id,
+  };
+};
+
+watch(
+  () => route.params.id,
+  async (id) => {
+    if (id) {
+      downloadedPost.value = getPost();
+      convertPostToFormItem();
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
   <NuxtLayout name="admin">
     <div class="editor">
-      <div class="editor-content">
-        <FormTextInput
-          v-model="model.title"
-          label="Tytuł"
-        />
-        <FormTextInput
-          v-model="model.description"
-          label="Opis"
-        />
-        <FormCategoriesSelect
-          v-model="model.category"
-        />
-        <FormTextInput
-          v-model="model.photoCover"
-          label="Grafika"
-        />
-        Treść posta
-        <q-editor
-          v-model="model.content"
-          min-height="5rem"
+      <div class="editor-toggle q-mb-lg">
+        Edytor
+        <q-toggle
+          v-model="previewVisible"
+          label="Podgląd"
+          color="purple-8"
         />
       </div>
-      <div class="editor-preview">
-        {{ model.title }}
-        <div v-html="model.content" />
+      <div class="editor-content">
+        <AdminPostEditor
+          v-if="!previewVisible"
+          v-model="post"
+        />
+        <AdminPostPreview
+          v-if="previewVisible"
+          :preview-data="post"
+        />
       </div>
     </div>
   </NuxtLayout>
@@ -51,18 +76,28 @@ const model = ref<PostItem>({
 @import '@/assets/colors.scss';
 
 .editor {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-toggle {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid $secondary;
+    color: $secondary;
+    padding: 20px;
+    border-radius: 12px;
+  }
 
-    &-content {
-        width: 20%;
-    }
-
-    &-preview {
-        width: 80%;
-        max-width: 1300px;
-        background-color: white;
-        border-radius: 8px;
-    }
+  &-content {
+    width: 100%;
+    max-width: 1300px;
+    background-color: $white;
+    padding: 30px;
+    border-radius: 8px;
+  }
 }
 </style>

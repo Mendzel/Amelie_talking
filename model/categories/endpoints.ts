@@ -1,7 +1,6 @@
-import type { PostCategory } from "~/model/filter/categories";
-
 export interface PostCategoryItem {
-    name: PostCategory,
+    id: number,
+    name: string,
     color: string,
     textColor: string,
 }
