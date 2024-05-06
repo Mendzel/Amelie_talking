@@ -61,9 +61,9 @@ const tabs: Tab[] = [
           >
             <q-tab-panel
               name="posts"
-              class="posts"
+              class="tab"
             >
-              <div class="posts-topbar">
+              <div class="tab-topbar">
                 <NuxtLink to="/admin/post">
                   <ButtonSecondary
                     label="Dodaj post"
@@ -74,10 +74,19 @@ const tabs: Tab[] = [
               <AdminPostList class=" q-mr-lg" />
             </q-tab-panel>
 
-            <q-tab-panel name="banners">
-              <div class="text-h4 q-mb-md">
-                Alarms
+            <q-tab-panel
+              name="banners"
+              class="tab"
+            >
+              <div class="tab-topbar">
+                <NuxtLink to="/admin/banner">
+                  <ButtonSecondary
+                    label="Dodaj baner"
+                    icon="add"
+                  />
+                </NuxtLink>
               </div>
+              <AdminBannerList />
             </q-tab-panel>
           </q-tab-panels>
         </template>
@@ -89,7 +98,7 @@ const tabs: Tab[] = [
 <style lang="scss" scoped>
 @import '@/assets/colors.scss';
 
-.posts {
+.tab {
   background-color: $primary;
 
   &-topbar {

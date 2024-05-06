@@ -21,7 +21,13 @@
     />
     <FormHtmlEditor
       v-model="model.content"
+      class="q-mb-md"
       label="Treść posta"
+    />
+    <ButtonSecondary
+      label="Zapisz"
+      type="submit"
+      class="editor-form-button"
     />
   </div>
 </template>
@@ -38,5 +44,10 @@ const model = defineModel<PostFormItem>({
 .editor-form {
   display: flex;
   flex-direction: column;
+
+  &-button {
+    width: 30%;
+    margin: auto;
+  }
 }
 </style>

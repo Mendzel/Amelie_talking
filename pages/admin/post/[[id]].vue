@@ -49,6 +49,12 @@ watch(
 
 <template>
   <NuxtLayout name="admin">
+    <NuxtLink to="/admin">
+      <ButtonSecondary
+        label="Wróć na listę"
+        class="q-ml-lg"
+      />
+    </NuxtLink>
     <div class="editor">
       <div class="editor-toggle q-mb-lg">
         Edytor
