@@ -10,7 +10,7 @@ interface BasePostItem {
 }
 
 export interface PostListItem extends BasePostItem {
-    category?: PostCategoryItem,
+    category: PostCategoryItem,
 }
 
 export interface PostFormItem extends BasePostItem {

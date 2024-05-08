@@ -3,10 +3,17 @@ import { mockPosts } from '~/model/mocks/posts';
 import type { PostListItem } from '~/model/post/endpoints';
 
 const post: PostListItem = mockPosts[1];
+
+const postLink = computed(() => {
+  return `/post/${post.id}`;
+});
 </script>
 
 <template>
-  <a class="most-recent">
+  <NuxtLink
+    :to="postLink"
+    class="most-recent"
+  >
     <div class="most-recent-post">
       <div class="most-recent-post-category">
         <p>{{ post.category?.name }}</p>
@@ -22,7 +29,7 @@ const post: PostListItem = mockPosts[1];
       class="most-recent-image"
       :src="post.photoCover"
     >
-  </a>
+  </NuxtLink>
 </template>
 
 <style lang="scss" scoped>

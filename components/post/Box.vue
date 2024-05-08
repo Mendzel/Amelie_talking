@@ -1,5 +1,8 @@
 <template>
-  <div class="box">
+  <NuxtLink
+    :to="postPath"
+    class="box"
+  >
     <div class="box-photo">
       <img
         :src="post.photoCover"
@@ -17,17 +20,21 @@
         <p>{{ post.description }}</p>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>
-import type { PostItem } from '~/model/post/endpoints';
+import type { PostListItem } from '~/model/post/endpoints';
 
-defineProps({
+const props = defineProps({
   post: {
-    type: Object as PropType<PostItem>,
+    type: Object as PropType<PostListItem>,
     required: true
   }
+});
+
+const postPath = computed(() => {
+  return `/post/${props.post.id}`;
 });
 </script>
 
@@ -39,6 +46,8 @@ defineProps({
   display: flex;
   padding: 10px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 
   &-photo {
     margin-right: 30px;

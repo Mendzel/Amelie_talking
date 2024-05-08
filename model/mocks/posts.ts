@@ -20,6 +20,6 @@ export const mockPosts: PostItem[] = [
         Pacjenci z borderline doświadczają również stanów porównywanych do nerwicy wegetatywnej.`,
         category: mockCategories[1],
         photoCover: 'https://shorturl.at/owHS2',
-        content: '',
+        content: `<p>Spróbujmy wyjaśnić pojęcie <span style="font-weight: bold;">borderline, co to</span> dokładnie oznacza. Okazuje się, że pod tą dziwną nazwą kryje się jedno z najcięższych zaburzeń osobowości. Określane jest również jako osobowość chwiejna emocjonalnie, <span style="font-weight: bold;">bpd</span> lub osobowość z pogranicza. Polega na częstej zmianie nastrojów, poczuciu niespełnienia i pustki, zaburzeniu tożsamości, obniżeniu nastroju, braku umiejętności budowania stabilnych relacji z innymi, a w szczególności tworzenia stałych związków emocjonalnych. W głównej mierze wynika to z lęku przed odrzuceniem, porzuceniem oraz rozczarowaniem swoją osobą. Negatywne postrzeganie świata osób cierpiących na BPD znajduje pełny wyraz w ich zachowaniu, które jest nieufne, impulsywne i antyspołeczne. Osobowości <span style="font-weight: bold;">borderline</span> towarzyszą negatywne uczucia: złości, gniewu, frustracji, niepokoju, smutku, wstydu i znudzenia (samym sobą, innymi ludźmi oraz całym światem).</p>`,
       },
 ];
