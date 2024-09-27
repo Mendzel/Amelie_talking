@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import { mockPosts } from '~/model/mocks/posts';
-import type { PostListItem } from '~/model/post/endpoints';
+import endpoints, { type PostListItem } from '~/model/post/endpoints';
 
-const post: PostListItem = mockPosts[1];
+const post = ref<PostListItem>();
+
+const loadPost = async () => {
+  post.value = await endpoints.getMostRecentPost();
+};
 
 const postLink = computed(() => {
-  return `/post/${post.id}`;
+  return `/post/${post.value?.id}`;
+});
+
+onMounted(() => {
+  loadPost();
 });
 </script>
 
@@ -15,19 +22,19 @@ const postLink = computed(() => {
     class="most-recent"
   >
     <div class="most-recent-post">
-      <div class="most-recent-post-category">
-        <p>{{ post.category?.name }}</p>
-      </div>
       <div class="most-recent-post-title">
-        <h3>{{ post.title }}</h3>
+        <h3>{{ post?.title }}</h3>
       </div>
       <div class="most-recent-post-description">
-        <p>{{ post.description }}</p>
+        <p>{{ post?.description }}</p>
+      </div>
+      <div class="most-recent-post-category">
+        <p>{{ post?.category?.name }}</p>
       </div>
     </div>
     <img
       class="most-recent-image"
-      :src="post.photoCover"
+      :src="post?.image"
     >
   </NuxtLink>
 </template>
@@ -53,9 +60,8 @@ const postLink = computed(() => {
 
     &-category {
       color: $primary;
-      margin-bottom: 20px;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     &-title {
@@ -75,9 +81,10 @@ const postLink = computed(() => {
       font-size: 14px;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2; /* number of lines to show */
+      -webkit-line-clamp: 3; /* number of lines to show */
       line-clamp: 2;
       -webkit-box-orient: vertical;
+      margin-bottom: 30px;
     }
   }
 

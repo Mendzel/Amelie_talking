@@ -5,7 +5,7 @@
   >
     <div class="post-image q-mb-lg">
       <img
-        :src="post.photoCover"
+        :src="post.image"
         :alt="post.title"
       >
     </div>
@@ -40,25 +40,22 @@
 </template>
 
 <script lang="ts" setup>
-import { mockPosts } from '~/model/mocks/posts';
-import type { PostListItem } from '~/model/post/endpoints';
+import endpoints, { type PostListItem } from '~/model/post/endpoints';
 
 const route = useRoute();
 
 const post = ref<PostListItem>();
 
-const getPost = (): PostListItem => {
+const getPost =  async () => {
   const id = +route.params.id;
-  // const post = await $axios.$get<PostListItem>(`/api/posts/${id}`);
-
-  return mockPosts[id];
+  post.value = await endpoints.getPost(id);
 };
 
 watch(
   () => route.params.id,
   async (id) => {
     if (id) {
-      post.value = getPost();
+      getPost();
     }
   },
   { immediate: true }
@@ -78,7 +75,7 @@ watch(
     text-align: center;
 
     img {
-      width: 80%;
+      width: 60%;
     }
   }
 

@@ -21,7 +21,8 @@ defineProps({
   border-radius: 10px;
   width: fit-content;
   color: v-bind('category.textColor');
-  padding: 3px;
+  padding: 6px;
   font-weight: bold;
+  font-size: 13px;
 }
 </style>

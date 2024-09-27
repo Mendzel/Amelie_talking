@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { mockPosts } from '~/model/mocks/posts';
-import type { PostFormItem, PostListItem } from '~/model/post/endpoints';
+import endpoints, { type PostFormItem, type PostListItem } from '~/model/post/endpoints';
 import _ from 'lodash';
 
 const route = useRoute();
@@ -10,7 +9,6 @@ definePageMeta({
 });
 
 const previewVisible = ref(false);
-const downloadedPost = ref<PostListItem | null>();
 
 const post = ref<PostFormItem>({
   title: '',
@@ -21,17 +19,17 @@ const post = ref<PostFormItem>({
   dateCreated: new Date(Date.now()).toLocaleDateString(),
 });
 
-const getPost = (): PostListItem => {
+const getPost = async () => {
   const id = +route.params.id;
-  // const post = await $axios.$get<PostListItem>(`/api/posts/${id}`);
+  const response = await endpoints.getPost(id);
 
-  return mockPosts[id];
+  convertPostToFormItem(response);
 };
 
-const convertPostToFormItem = () => {
+const convertPostToFormItem = (downloadedPost: PostListItem) => {
   post.value = {
-    ..._.omit(downloadedPost.value, 'category'),
-    categoryId: downloadedPost.value?.category?.id,
+    ..._.omit(downloadedPost, 'category'),
+    categoryId: downloadedPost.category?.id,
   };
 };
 
@@ -39,8 +37,7 @@ watch(
   () => route.params.id,
   async (id) => {
     if (id) {
-      downloadedPost.value = getPost();
-      convertPostToFormItem();
+      getPost();
     }
   },
   { immediate: true }

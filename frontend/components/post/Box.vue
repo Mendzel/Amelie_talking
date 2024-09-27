@@ -5,19 +5,19 @@
   >
     <div class="box-photo">
       <img
-        :src="post.photoCover"
+        :src="post.image"
         :alt="post.description"
       >
     </div>
     <div class="box-post">
       <div class="box-post-category q-mb-sm">
-        <PostCategory :category="post.category" />
+        <PostCategory :category="post?.category" />
       </div>
       <div class="box-post-title">
-        <h2>{{ post.title }}</h2>
+        <h2>{{ post?.title }}</h2>
       </div>
       <div class="box-post-description">
-        <p>{{ post.description }}</p>
+        <p>{{ post?.description }}</p>
       </div>
     </div>
   </NuxtLink>
@@ -55,6 +55,7 @@ const postPath = computed(() => {
     img {
       width: 260px;
       height: 180px;
+      object-fit: cover;
     }
   }
 

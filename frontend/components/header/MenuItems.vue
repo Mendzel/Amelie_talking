@@ -10,14 +10,6 @@
   <li class="header-menu-list-button">
     <NuxtLink
       class="link"
-      to="/selfcare"
-    >
-      Zdrowie
-    </NuxtLink>
-  </li>
-  <li class="header-menu-list-button">
-    <NuxtLink
-      class="link"
       to="/help"
     >
       Pomoc

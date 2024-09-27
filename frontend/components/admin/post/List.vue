@@ -35,10 +35,17 @@
 </template>
 
 <script lang="ts" setup>
-import { mockPosts } from '~/model/mocks/posts';
-import {type PostListItem } from '~/model/post/endpoints';
+import endpoints, { type PostListItem } from '~/model/post/endpoints';
 
-const posts: PostListItem[] = mockPosts;
+const posts = ref<PostListItem[]>([]);
+
+const loadPosts = async () => {
+  posts.value = await endpoints.getPosts();
+};
+
+onMounted(() => {
+  loadPosts();
+});
 
 const getEditPath = (id: number | undefined) => `admin/post/${id}`;
 </script>
